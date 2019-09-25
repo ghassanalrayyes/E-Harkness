@@ -1,8 +1,10 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JRadioButton;
+import java.awt.BorderLayout;
 
-public class eh {
+public class MainWindow {
 
 	private JFrame frame;
 
@@ -13,7 +15,7 @@ public class eh {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					eh window = new eh();
+					MainWindow window = new MainWindow();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -25,7 +27,7 @@ public class eh {
 	/**
 	 * Create the application.
 	 */
-	public eh() {
+	public MainWindow() {
 		initialize();
 	}
 
@@ -36,6 +38,9 @@ public class eh {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
+		frame.getContentPane().add(rdbtnNewRadioButton, BorderLayout.CENTER);
 	}
 
 }
