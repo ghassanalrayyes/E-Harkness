@@ -1,12 +1,13 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JRadioButton;
-import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class MainWindow {
 
-	private JFrame frame;
+	private JFrame frmHarknessDiscussion;
 
 	/**
 	 * Launch the application.
@@ -16,7 +17,7 @@ public class MainWindow {
 			public void run() {
 				try {
 					MainWindow window = new MainWindow();
-					window.frame.setVisible(true);
+					window.frmHarknessDiscussion.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,12 +36,18 @@ public class MainWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmHarknessDiscussion = new JFrame();
+		frmHarknessDiscussion.setBackground(Color.LIGHT_GRAY);
+		frmHarknessDiscussion.getContentPane().setBackground(Color.LIGHT_GRAY);
+		frmHarknessDiscussion.getContentPane().setLayout(null);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("New radio button");
-		frame.getContentPane().add(rdbtnNewRadioButton, BorderLayout.CENTER);
+		JLabel table = new JLabel("");
+		table.setIcon(new ImageIcon("img/table.jpg"));
+		table.setBounds(240, 145, 800, 400);
+		frmHarknessDiscussion.getContentPane().add(table);
+		frmHarknessDiscussion.setResizable(false);
+		frmHarknessDiscussion.setTitle("Harkness Discussion");
+		frmHarknessDiscussion.setBounds(100, 100, 1280, 720);
+		frmHarknessDiscussion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
 }
