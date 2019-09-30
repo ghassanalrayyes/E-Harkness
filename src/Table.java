@@ -5,8 +5,8 @@ public class Table {
 	
 	//representing the flow of the discussion
 	LinkedList<Member> discussion; 
-	//keeping track of how often students contribute
-	HashMap<String, Integer> member_frequency;
+	//keeping track of student data
+	HashMap<String, Member> members;
 	
 	//tracking the state of the discussion
 	boolean isActive = false;
@@ -14,17 +14,22 @@ public class Table {
 	
 	public Table() {
 		discussion = new LinkedList<Member>();
-		member_frequency = new HashMap<String, Integer>();
+		members = new HashMap<String, Member>();
 	}
 	
 	public void addMember(Member m) {
-		member_frequency.put(m.student_id, 0);
+		members.put(m.student_id, m);
 	}
 	
 	public void removeMember(Member m) {
 		if(!isActive)
-			member_frequency.remove(m.student_id);
+			members.remove(m.student_id);
 	}
+	
+	public void transitionTo(String studentID) {
+		discussion.add(members.get(studentID));
+	}
+	
 	
 	
 	

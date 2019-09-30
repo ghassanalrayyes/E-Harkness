@@ -5,6 +5,7 @@ public class Member {
 	String full_name;
 	String student_id;
 	BufferedImage image;
+	int frequency = 0;
 	//add image
 	
 	public Member(String full_name, String student_id, BufferedImage image) {
