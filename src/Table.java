@@ -46,7 +46,19 @@ public class Table {
 				seat_map[i] = true;
 			}
 		}else {
+			int occupied = 0;
+			spaces = (int)((double)max_members / (double)num_members) + 1;
+			for (int i = 0; i < seat_map.length; i+= spaces) {
+				seat_map[i] = true;
+				occupied++;
+			}
 			
+			if(occupied < num_members) {
+				for (int i = spaces/2; i < seat_map.length && occupied < num_members; i+= spaces) {
+					seat_map[i] = true;
+					occupied++;
+				}
+			}
 		}
 	}
 	
