@@ -1,13 +1,20 @@
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import java.awt.Canvas;
 
 public class MainWindow {
 
 	private JFrame frmHarknessDiscussion;
+	private ArrayList<Point> points = new ArrayList<Point>();
 
 	/**
 	 * Launch the application.
@@ -33,7 +40,7 @@ public class MainWindow {
 	public MainWindow() {
 		initialize();
 		
-		Table table = new Table();
+		Table table = new Table(10);
 		
 	}
 
@@ -46,13 +53,27 @@ public class MainWindow {
 		frmHarknessDiscussion.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frmHarknessDiscussion.getContentPane().setLayout(null);
 		
-		JLabel table = new JLabel("");
-		table.setIcon(new ImageIcon("img/table.jpg"));
-		table.setBounds(240, 145, 800, 400);
-		frmHarknessDiscussion.getContentPane().add(table);
-		frmHarknessDiscussion.setResizable(false);
+	
+		Canvas canvas = new Canvas() {
+			public void paint(Graphics g) {
+				//g.drawImage(ImageIO.read(new File("img/table.jpg")), 0, 0, 800, 400,this);
+				g.setColor(new Color(213,191,134));
+				g.fillOval(0, 0, 800, 400);
+				g.setColor(Color.BLACK);
+				g.fillOval(100, 100, 100,100);
+			}
+		};
+		canvas.setBounds(240, 145, 800, 400);
+		frmHarknessDiscussion.getContentPane().add(canvas);
 		frmHarknessDiscussion.setTitle("Harkness Discussion");
 		frmHarknessDiscussion.setBounds(100, 100, 1280, 720);
 		frmHarknessDiscussion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		/*
+		JLabel table = new JLabel("");
+		table.setIcon(new ImageIcon("img/table.jpg"));
+		table.setBounds(240, 145, 800, 400);
+		frmHarknessDiscussion.getContentPane().add(table);*/
 	}
+	
 }
