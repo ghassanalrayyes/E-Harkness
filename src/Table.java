@@ -15,6 +15,7 @@ public class Table {
 
 	//how the members are distributed
 	boolean[] seat_map = new boolean[max_members];
+	Member[] seat_chart = new Member[max_members];
 	
 	int num_members;
 	
@@ -27,6 +28,11 @@ public class Table {
 	
 	public void addMember(Member m) {
 		members.put(m.student_id, m);
+		for (int i = 0; i < seat_map.length; i++) {
+			if(seat_map[i] && seat_chart[i] == null) {
+				seat_chart[i] = m;
+			}
+		}
 	}
 	
 	public void removeMember(Member m) {
