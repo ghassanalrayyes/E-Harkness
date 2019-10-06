@@ -20,6 +20,7 @@ public class Table {
 	int num_members;
 	
 	public Table(int num_members) {
+		isActive = true;
 		discussion = new LinkedList<Member>();
 		members = new HashMap<String, Member>();
 		this.num_members = num_members; 
@@ -41,7 +42,8 @@ public class Table {
 	}
 	
 	public void transitionTo(String studentID) {
-		discussion.add(members.get(studentID));
+		if(!isActive)
+			discussion.add(members.get(studentID));
 	}
 	
 	private void distributeMemebrs() {
@@ -67,6 +69,14 @@ public class Table {
 			}
 		}
 	}
+	
+	public void endSession() {
+		isActive = false;
+		
+		//can
+	}
+	
+	
 	
 	
 	
