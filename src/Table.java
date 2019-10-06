@@ -18,22 +18,41 @@ public class Table {
 	Member[] seat_chart = new Member[max_members];
 	
 	int num_members;
+	boolean shuffle_positions;
 	
-	public Table(int num_members) {
+	//pass in true if we want the program to automatically equally distribute the positions
+	//pass in false if the teacher wants to manually add the students at their designated positions
+	public Table(int num_members, boolean shuffle_positions) {
+		this.shuffle_positions = shuffle_positions;
 		isActive = true;
 		discussion = new LinkedList<Member>();
 		members = new HashMap<String, Member>();
 		this.num_members = num_members; 
-		distributeMemebrs();
+		if(this.shuffle_positions)
+			distributeMemebrs();
 	}
 	
+	//add member at one of the distributed positions, automatically
 	public void addMember(Member m) {
-		members.put(m.student_id, m);
-		for (int i = 0; i < seat_map.length; i++) {
-			if(seat_map[i] && seat_chart[i] == null) {
-				seat_chart[i] = m;
+		if(shuffle_positions) {
+			members.put(m.student_id, m);
+			for (int i = 0; i < seat_map.length; i++) {
+				if(seat_map[i] && seat_chart[i] == null) {
+					seat_chart[i] = m;
+					seat_map[i] = true;
+				}
 			}
 		}
+		
+	}
+	
+	//teacher selects which seat on the table to add member at
+	public void addMember(Member m, int position) {
+		
+		members.put(m.student_id, m);
+		seat_chart[position] = m;
+		seat_map[position] = true;
+		
 	}
 	
 	public void removeMember(Member m) {
