@@ -1,6 +1,7 @@
 import java.util.*;
 
 
+
 public class Table {
 	
 	//representing the flow of the discussion
@@ -92,7 +93,6 @@ public class Table {
 	public void endSession() {
 		isActive = false;
 		
-		//can
 	}
 	
 	
