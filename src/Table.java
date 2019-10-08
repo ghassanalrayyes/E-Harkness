@@ -5,9 +5,9 @@ import java.util.*;
 public class Table {
 	
 	//representing the flow of the discussion
-	LinkedList<Member> discussion; 
+	private LinkedList<Member> discussion; 
 	//keeping track of student data
-	HashMap<String, Member> members;
+	private HashMap<String, Member> members;
 	
 	//tracking the state of the discussion
 	boolean isActive = false;
@@ -15,11 +15,11 @@ public class Table {
 	int max_members = 20;
 
 	//how the members are distributed
-	boolean[] seat_map = new boolean[max_members];
-	Member[] seat_chart = new Member[max_members];
+	private boolean[] seat_map = new boolean[max_members];
+	private String[] seat_chart = new String[max_members];
 	
 	int num_members;
-	boolean shuffle_positions;
+	private boolean shuffle_positions;
 	
 	//pass in true if we want the program to automatically equally distribute the positions
 	//pass in false if the teacher wants to manually add the students at their designated positions
@@ -39,7 +39,7 @@ public class Table {
 			members.put(m.student_id, m);
 			for (int i = 0; i < seat_map.length; i++) {
 				if(seat_map[i] && seat_chart[i] == null) {
-					seat_chart[i] = m;
+					seat_chart[i] = m.student_id;
 					seat_map[i] = true;
 				}
 			}
@@ -51,7 +51,7 @@ public class Table {
 	public void addMember(Member m, int position) {
 		
 		members.put(m.student_id, m);
-		seat_chart[position] = m;
+		seat_chart[position] = m.student_id;
 		seat_map[position] = true;
 		
 	}
@@ -61,8 +61,17 @@ public class Table {
 			members.remove(m.student_id);
 	}
 	
+	//to get the current state of the table -- for painting the layout and getting student information
+	public Member[] getSeatingChart(){
+		Member[] output = new Member[max_members];
+		for (int i = 0; i < output.length; i++) {
+			output[i] = members.get(seat_chart[i]);
+		}
+		return output;
+	}
+	
 	public void transitionTo(String studentID) {
-		if(!isActive)
+		if(isActive)
 			discussion.add(members.get(studentID));
 	}
 	
