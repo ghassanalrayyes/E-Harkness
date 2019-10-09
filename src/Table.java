@@ -5,7 +5,7 @@ import java.util.*;
 public class Table {
 	
 	//representing the flow of the discussion
-	private LinkedList<Member> discussion; 
+	private LinkedList<EntryNode> discussion; 
 	//keeping track of student data
 	private HashMap<String, Member> members;
 	
@@ -25,14 +25,21 @@ public class Table {
 	//pass in false if the teacher wants to manually add the students at their designated positions
 	public Table(int num_members, boolean shuffle_positions) {
 		this.shuffle_positions = shuffle_positions;
-		isActive = true;
-		discussion = new LinkedList<Member>();
+		
+		discussion = new LinkedList<EntryNode>();
 		members = new HashMap<String, Member>();
 		this.num_members = num_members; 
 		if(this.shuffle_positions)
 			distributeMemebrs();
 	}
-	//
+	
+	public void startHarkness() {
+		isActive = true;
+		
+		//enable timer
+		
+	}
+	
 	//add member at one of the distributed positions, automatically
 	public void addMember(Member m) {
 		if(shuffle_positions) {
@@ -72,11 +79,10 @@ public class Table {
 	
 	public void transitionTo(String studentID) {
 		if(isActive)
-			discussion.add(members.get(studentID));
+			discussion.add(new EntryNode(members.get(studentID)));
 	}
 	
-	//dddd
-	//
+	
 	private void distributeMemebrs() {
 		int spaces = 0;
 		if(max_members % num_members == 0) {
@@ -101,7 +107,7 @@ public class Table {
 		}
 	}
 	
-	public void endSession() {
+	public void endHakrness() {
 		isActive = false;
 		
 	}
