@@ -76,7 +76,7 @@ public class Table {
 	}
 	
 	//dddd
-	
+	//
 	private void distributeMemebrs() {
 		int spaces = 0;
 		if(max_members % num_members == 0) {
