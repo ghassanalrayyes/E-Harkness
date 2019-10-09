@@ -32,7 +32,7 @@ public class Table {
 		if(this.shuffle_positions)
 			distributeMemebrs();
 	}
-	
+	//
 	//add member at one of the distributed positions, automatically
 	public void addMember(Member m) {
 		if(shuffle_positions) {
