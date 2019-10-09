@@ -75,6 +75,8 @@ public class Table {
 			discussion.add(members.get(studentID));
 	}
 	
+	//dddd
+	
 	private void distributeMemebrs() {
 		int spaces = 0;
 		if(max_members % num_members == 0) {
