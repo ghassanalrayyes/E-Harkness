@@ -10,11 +10,15 @@ import javax.swing.JLabel;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import java.awt.Canvas;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JPopupMenu;
+import java.awt.Component;
 
 public class MainWindow {
 
 	private JFrame frmHarknessDiscussion;
-	private ArrayList<Point> points = new ArrayList<Point>();
+	private Point[] points = new Point[20];
 
 	/**
 	 * Launch the application.
@@ -40,7 +44,28 @@ public class MainWindow {
 	public MainWindow() {
 		initialize();
 		
-		Table table = new Table(10);
+		points[0]=new Point(400,0,true);
+		points[1]=new Point(400,395,true);
+		points[2]=new Point(0,200,true);
+		points[3]=new Point(795,200,true);
+		points[4]=new Point(600,25,true);
+		points[5]=new Point(600,375,true);//
+		points[6]=new Point(200,25,true);
+		points[7]=new Point(200,375,true);
+		points[8]=new Point(700,70,true);
+		points[9]=new Point(700,330,true);
+		points[10]=new Point(100,70,true);
+		points[11]=new Point(100,330,true);
+		points[12]=new Point(500,5,true);
+		points[13]=new Point(500,395,true);
+		points[14]=new Point(300,5,true);
+		points[15]=new Point(300,395,true);
+		points[16]=new Point(30,125,true);
+		points[17]=new Point(770,125,true);
+		points[18]=new Point(770,275,true);
+		points[19]=new Point(30,275,true);
+		
+		Table table = new Table(10, false);
 		
 	}
 
@@ -60,9 +85,22 @@ public class MainWindow {
 				g.setColor(new Color(213,191,134));
 				g.fillOval(0, 0, 800, 400);
 				g.setColor(Color.BLACK);
-				g.fillOval(100, 100, 100,100);
+				for(int i=0;i<20;i++) {
+					if(points[i].used())
+						g.fillOval(points[i].getX(),points[i].getY(),5,5);
+				}
 			}
 		};
+		canvas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				System.out.println(e.getX());
+				System.out.println(e.getY());
+			}
+		});
+		
+		JPopupMenu popupMenu = new JPopupMenu();
+		addPopup(frmHarknessDiscussion.getContentPane(), popupMenu);
 		canvas.setBounds(240, 145, 800, 400);
 		frmHarknessDiscussion.getContentPane().add(canvas);
 		frmHarknessDiscussion.setTitle("Harkness Discussion");
@@ -75,5 +113,21 @@ public class MainWindow {
 		table.setBounds(240, 145, 800, 400);
 		frmHarknessDiscussion.getContentPane().add(table);*/
 	}
-	
+	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
+	}
 }
