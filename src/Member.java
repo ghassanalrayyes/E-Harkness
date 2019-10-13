@@ -29,4 +29,8 @@ public class Member {
 		interruptions.add(new Interruption(time));
 	}
 	
+	public void addQuestion(long time) {
+		questions.add(new Question(time));
+	}
+	
 }

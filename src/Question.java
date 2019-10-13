@@ -3,7 +3,7 @@ public class Question {
 
 	long time;
 	
-	public Question(int startTime) {
+	public Question(long startTime) {
 		time = startTime;
 	}
 	
