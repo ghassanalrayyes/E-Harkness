@@ -46,7 +46,7 @@ public class panel {
 		frmStudent.setBounds(100, 100, 300, 500);
 		frmStudent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStudent.getContentPane().setLayout(null);
-		ImageIcon testr = new ImageIcon("/Users/mjabri/git/E-Harkness/img/test.jpg");
+		ImageIcon testr = new ImageIcon("img/test.jpg");
 		Image scaledTest=testr.getImage().getScaledInstance(164, 200, Image.SCALE_SMOOTH);
 		testr=new ImageIcon(scaledTest);
 		JLabel student = new JLabel("");
