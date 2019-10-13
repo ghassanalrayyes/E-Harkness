@@ -78,6 +78,7 @@ public class panel {
 		frmStudent.getContentPane().add(logoIcon);
 		
 		JTextArea comments = new JTextArea();
+		comments.setWrapStyleWord(true);
 		comments.setLineWrap(true);
 		comments.setText("Type your comments here.");
 		comments.setBounds(6, 213, 288, 259);
