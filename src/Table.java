@@ -16,7 +16,7 @@ public class Table {
 	int max_members = 20;
 	
 	long startTime;
-
+	
 	//how the members are distributed
 	private boolean[] seat_map = new boolean[max_members];
 	private String[] seat_chart = new String[max_members];
