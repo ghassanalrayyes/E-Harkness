@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -13,6 +14,8 @@ public class Table {
 	boolean isActive = false;
 	
 	int max_members = 20;
+	
+	long startTime;
 
 	//how the members are distributed
 	private boolean[] seat_map = new boolean[max_members];
@@ -35,9 +38,17 @@ public class Table {
 	
 	public void startHarkness() {
 		isActive = true;
+		startTime = System.currentTimeMillis();
 		
-		//enable timer
-		
+	}
+	
+	public String getElapsedTime() {
+		long millis = System.currentTimeMillis() - startTime;
+		return String.format("%02d min, %02d sec", 
+			    TimeUnit.MILLISECONDS.toMinutes(millis),
+			    TimeUnit.MILLISECONDS.toSeconds(millis) - 
+			    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
+			);
 	}
 	
 	//add member at one of the distributed positions, automatically
@@ -110,6 +121,12 @@ public class Table {
 	public void endHakrness() {
 		isActive = false;
 		
+	}
+	
+	
+	public static void main(String[] args) {
+		Table t = new Table(10, true);
+		System.out.println(t.getElapsedTime());
 	}
 	
 	
