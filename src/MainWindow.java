@@ -49,7 +49,7 @@ public class MainWindow {
 		points[2]=new Point(0,200,true);
 		points[3]=new Point(795,200,true);
 		points[4]=new Point(600,25,true);
-		points[5]=new Point(600,375,true);//
+		points[5]=new Point(600,375,true);
 		points[6]=new Point(200,25,true);
 		points[7]=new Point(200,375,true);
 		points[8]=new Point(700,70,true);
@@ -111,22 +111,5 @@ public class MainWindow {
 		table.setIcon(new ImageIcon("img/table.jpg"));
 		table.setBounds(240, 145, 800, 400);
 		frmHarknessDiscussion.getContentPane().add(table);*/
-	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 }
