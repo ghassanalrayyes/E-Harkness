@@ -41,6 +41,7 @@ public class panel {
 	 */
 	private void initialize() {
 		frmStudent = new JFrame();
+		frmStudent.setResizable(false);
 		frmStudent.setTitle("Student");
 		frmStudent.setBounds(100, 100, 300, 500);
 		frmStudent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

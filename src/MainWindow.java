@@ -74,9 +74,11 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		frmHarknessDiscussion = new JFrame();
+		frmHarknessDiscussion.setResizable(false);
 		frmHarknessDiscussion.setBackground(Color.LIGHT_GRAY);
 		frmHarknessDiscussion.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frmHarknessDiscussion.getContentPane().setLayout(null);
+		frmHarknessDiscussion.setLocationRelativeTo(null);
 		
 	
 		Canvas canvas = new Canvas() {
@@ -98,9 +100,6 @@ public class MainWindow {
 				System.out.println(e.getY());
 			}
 		});
-		
-		JPopupMenu popupMenu = new JPopupMenu();
-		addPopup(frmHarknessDiscussion.getContentPane(), popupMenu);
 		canvas.setBounds(240, 145, 800, 400);
 		frmHarknessDiscussion.getContentPane().add(canvas);
 		frmHarknessDiscussion.setTitle("Harkness Discussion");
