@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 
 public class panel {
-
+	//lets hope this works
 	private JFrame frmStudent;
 
 	Member m;
