@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class MainWindow {
-
+//kkkhuhh
 	private JFrame frmHarknessDiscussion;
 	private Point[] points = new Point[20];
 	private JTextField sID;
