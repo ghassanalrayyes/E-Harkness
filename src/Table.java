@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import org.apache.pdfbox.contentstream.PDFStreamEngine;
@@ -9,7 +10,7 @@ public class Table {
 	private LinkedList<EntryNode> discussion; 
 	//keeping track of student data
 	private HashMap<String, Member> members;
-	
+	Reader reader;
 	//tracking the state of the discussion
 	boolean isActive = false;
 	
@@ -26,7 +27,10 @@ public class Table {
 	
 	//pass in true if we want the program to automatically equally distribute the positions
 	//pass in false if the teacher wants to manually add the students at their designated positions
-	public Table(int num_members, boolean shuffle_positions) {
+	public Table(int num_members, boolean shuffle_positions) throws IOException {
+		
+		reader = new Reader();
+		
 		this.shuffle_positions = shuffle_positions;
 		
 		discussion = new LinkedList<EntryNode>();
@@ -125,15 +129,14 @@ public class Table {
 	}
 	
 	public Member getMember(String student_id) {
-		Reader r = new Reader();
-		return r.members.get(student_id);
+		return reader.members.get(student_id);
 	}
 	
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Table t = new Table(10, true);
 		System.out.println(t.getElapsedTime());
-	}
+	}*/
 	
 	
 	

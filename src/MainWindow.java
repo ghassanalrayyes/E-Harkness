@@ -48,8 +48,9 @@ public class MainWindow {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public MainWindow() {
+	public MainWindow() throws IOException {
 	
 		table = new Table(10, false);
 		sChart=table.getSeatingChart();
@@ -142,6 +143,10 @@ public class MainWindow {
 		addM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				table.addMember(table.getMember(sID.getText()),Integer.parseInt(sP.getText())-1);
+				
+				//you forgot to enable the point
+				points[Integer.parseInt(sP.getText())-1].draw = true;
+				
 				sChart=table.getSeatingChart();
 				canvas.repaint();
 			}

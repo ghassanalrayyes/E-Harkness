@@ -35,8 +35,48 @@ public class Reader extends PDFStreamEngine {
 	String[] text_arr;
 	ArrayList<String> filtered_student_data;
 	
-	public Reader() {
+	public Reader() throws IOException {
 		members = new HashMap<String, Member>();
+		
+		PDDocument doc = null;
+		String pdf_file = "pdfs/StudentDirectory2019-2020.pdf";
+		
+		try {
+			doc = PDDocument.load(new File(pdf_file));
+			PDFTextStripper text_stripper = new PDFTextStripper();
+			
+			//to be processed
+			String parsed_text = text_stripper.getText(doc);
+			
+			//because you can't access these vars in the main method -- should be reworked
+			Setter1(parsed_text);
+			Setter2();
+			
+			printArr();
+			
+			PDPageTree pages = doc.getPages();
+			int pageNum = 0;
+			for(PDPage page : pages) {
+				
+				processPage(page);
+				
+			}
+			
+			System.out.println("\n");
+			System.out.println(members);
+			//System.out.println(reader.members.get("DimahAl-Gburi").full_name);
+			
+		}finally
+        {
+            if( doc != null )
+            {
+                doc.close();
+            }
+            
+            //return sth??
+        }
+		
+		
 	}
 	
 	
@@ -53,7 +93,7 @@ public class Reader extends PDFStreamEngine {
 		System.out.println(members);
 	}
 
-	public static void main(String[] args) throws IOException {
+	/*public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		
 		Reader reader = new Reader();
@@ -94,7 +134,7 @@ public class Reader extends PDFStreamEngine {
             
             //return sth??
         }
-	}
+	}*/
 	
 	private void Setter1(String input) {
 		text_arr = input.split("\n");
