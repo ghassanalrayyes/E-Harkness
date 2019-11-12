@@ -27,7 +27,7 @@ public class panel {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Member dum=new Member("David Friedman","DavidFriedman",ImageIO.read(new File("img/test.jpg")));
+					Member dum=new Member("David Friedman","12","DavidFriedman",ImageIO.read(new File("img/test.jpg")));
 					panel window = new panel(dum);
 					window.frmStudent.setVisible(true);
 				} catch (Exception e) {

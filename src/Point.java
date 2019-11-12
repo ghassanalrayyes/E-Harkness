@@ -18,6 +18,10 @@ public class Point {
 		return y;
 	}
 	
+	public void setUse(boolean b) {
+		b=draw;
+	}
+	
 	public boolean used() {
 		return draw;
 	}
