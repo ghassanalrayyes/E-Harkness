@@ -1,8 +1,11 @@
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,14 +16,19 @@ public class panel {
 
 	private JFrame frmStudent;
 
+	Member m;
 	/**
 	 * Launch the application.
 	 */
+	
+	
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					panel window = new panel();
+					Member dum=new Member("David Friedman","DavidFriedman",ImageIO.read(new File("img/test.jpg")));
+					panel window = new panel(dum);
 					window.frmStudent.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -28,11 +36,14 @@ public class panel {
 			}
 		});
 	}
+	
+	
 
 	/**
 	 * Create the application.
 	 */
-	public panel() {
+	public panel(Member m1) {
+		m=m1;
 		initialize();
 	}
 
@@ -42,11 +53,11 @@ public class panel {
 	private void initialize() {
 		frmStudent = new JFrame();
 		frmStudent.setResizable(false);
-		frmStudent.setTitle("Student");
+		frmStudent.setTitle(m.full_name);
 		frmStudent.setBounds(100, 100, 300, 500);
 		frmStudent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmStudent.getContentPane().setLayout(null);
-		ImageIcon testr = new ImageIcon("img/test.jpg");
+		ImageIcon testr = new ImageIcon(m.image);
 		Image scaledTest=testr.getImage().getScaledInstance(164, 200, Image.SCALE_SMOOTH);
 		testr=new ImageIcon(scaledTest);
 		JLabel student = new JLabel("");
