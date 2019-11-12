@@ -141,7 +141,7 @@ public class MainWindow {
 		JButton addM = new JButton("Add");
 		addM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				table.addMember(table.getMember(sID.getText()),Integer.parseInt(sID.getText())-1);
+				table.addMember(table.getMember(sID.getText()),Integer.parseInt(sP.getText())-1);
 				sChart=table.getSeatingChart();
 				canvas.repaint();
 			}
