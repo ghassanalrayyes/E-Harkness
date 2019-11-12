@@ -58,7 +58,7 @@ public class Reader extends PDFStreamEngine {
 		
 		Reader reader = new Reader();
 		PDDocument doc = null;
-		String pdf_file = "pdfs/StudentDirectory2019-2020 copy.pdf";
+		String pdf_file = "pdfs/StudentDirectory2019-2020.pdf";
 		
 		try {
 			doc = PDDocument.load(new File(pdf_file));

@@ -74,6 +74,7 @@ public class Table {
 		
 	}
 	
+	
 	public void removeMember(Member m) {
 		if(!isActive)
 			members.remove(m.student_id);
