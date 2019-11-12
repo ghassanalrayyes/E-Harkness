@@ -123,11 +123,20 @@ public class Table {
 		
 	}
 	
+	public Member getMember(String student_id) {
+		Reader r = new Reader();
+		return r.members.get(student_id);
+	}
+	
 	
 	public static void main(String[] args) {
 		Table t = new Table(10, true);
 		System.out.println(t.getElapsedTime());
 	}
+	
+	
+	
+	
 	
 	
 	
