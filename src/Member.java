@@ -6,6 +6,7 @@ public class Member {
 	String full_name;
 	String student_id;
 	BufferedImage image;
+	String grade;
 	
 	ArrayList<Interruption> interruptions;
 	ArrayList<Question> questions;
@@ -16,11 +17,11 @@ public class Member {
 	String comments = "";
 	
 	
-	public Member(String full_name, String student_id, BufferedImage image) {
+	public Member(String full_name, String grade, String student_id, BufferedImage image) {
 		this.full_name = full_name;
 		this.student_id = student_id;
 		this.image = image;
-		
+		this.grade = grade;
 		interruptions = new ArrayList<Interruption>();
 		questions = new ArrayList<Question>();
 	}
