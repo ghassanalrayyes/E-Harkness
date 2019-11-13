@@ -1,21 +1,18 @@
+import java.awt.Rectangle;
 
-public class Point {
+public class Point extends Rectangle{
 
-	private int x,y;
+	//private int x,y;
 	boolean draw;
+	boolean clicked;
 	
 	public Point(int x, int y, boolean draw) {
 		this.x=x;
 		this.y=y;
+		this.height = 10;
+		this.width = 10;
 		this.draw=draw;
-	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
+		clicked = false;
 	}
 	
 	public void setUse(boolean b) {

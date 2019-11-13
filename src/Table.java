@@ -7,7 +7,7 @@ import org.apache.pdfbox.contentstream.PDFStreamEngine;
 public class Table {
 	
 	//representing the flow of the discussion
-	private LinkedList<EntryNode> discussion; 
+	LinkedList<EntryNode> discussion; 
 	//keeping track of student data
 	private HashMap<String, Member> members;
 	Reader reader;
@@ -48,13 +48,13 @@ public class Table {
 	
 	public String getElapsedTime() {
 		long millis = System.currentTimeMillis() - startTime;
-		return String.format("%02d min, %02d sec", 
+		return String.format("%02d:%02d", 
 			    TimeUnit.MILLISECONDS.toMinutes(millis),
 			    TimeUnit.MILLISECONDS.toSeconds(millis) - 
 			    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))
 			);
 	}
-	
+		
 	//add member at one of the distributed positions, automatically
 	public void addMember(Member m) {
 		if(shuffle_positions) {
@@ -93,9 +93,9 @@ public class Table {
 		return output;
 	}
 	
-	public void transitionTo(String studentID) {
+	public void transitionTo(String studentID, Point p) {
 		if(isActive)
-			discussion.add(new EntryNode(members.get(studentID)));
+			discussion.add(new EntryNode(members.get(studentID), p));
 	}
 	
 	

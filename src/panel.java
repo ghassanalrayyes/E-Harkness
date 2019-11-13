@@ -23,7 +23,7 @@ public class panel {
 	
 	
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -36,13 +36,22 @@ public class panel {
 			}
 		});
 	}
-	
+	*/
 	
 
 	/**
 	 * Create the application.
 	 */
 	public panel(Member m1) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {					
+					frmStudent.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		m=m1;
 		initialize();
 	}
@@ -88,7 +97,7 @@ public class panel {
 		logoIcon.setBounds(203, 6, 74, 77);
 		frmStudent.getContentPane().add(logoIcon);
 		
-		JTextArea comments = new JTextArea();
+		JTextArea comments = new JTextArea(m.comments);
 		comments.setWrapStyleWord(true);
 		comments.setLineWrap(true);
 		comments.setText("Type your comments here.");
