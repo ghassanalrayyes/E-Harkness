@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 
 import java.awt.BasicStroke;
@@ -41,6 +42,7 @@ public class MainWindow {
 	private Timer timer;
 	public final static int ONE_SECOND = 1000;
 	private int diam = 10;
+	private int border_thickness = 1;
 	
 	/**
 	 * Launch the application.
@@ -202,91 +204,109 @@ public class MainWindow {
 		
 		JLabel p1 = new JLabel("");
 		p1.setBounds(152, 295, 82, 100);
+		p1.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p1);
 		images[0] = p1;
 		
 		JLabel p2 = new JLabel("");
 		p2.setBounds(180, 183, 82, 100);
+		p2.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p2);
 		images[1] = p2;
 		
 		JLabel p3 = new JLabel("");
 		p3.setBounds(275, 100, 82, 100);
 		frmHarknessDiscussion.getContentPane().add(p3);
+		p3.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		images[2] = p3;
 		
 		JLabel p4 = new JLabel("");
 		p4.setBounds(367, 65, 82, 100);
+		p4.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p4);
 		images[3] = p4;
 		
 		JLabel p5 = new JLabel("");
 		p5.setBounds(460, 45, 82, 100);
+		p5.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p5);
 		images[4] = p5;
 		
 		JLabel p7 = new JLabel("");
 		p7.setBounds(738, 45, 82, 100);
+		p7.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p7);
 		images[6] = p7;
 		
 		JLabel p8 = new JLabel("");
 		p8.setBounds(831, 65, 82, 100);
+		p8.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p8);
 		images[7] = p8;
 		
 		JLabel p9 = new JLabel("");
 		p9.setBounds(923, 100, 82, 100);
+		p9.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p9);
 		images[8] = p9;
 		
 		JLabel p10 = new JLabel("");
 		p10.setBounds(1018, 183, 82, 100);
+		p10.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p10);
 		images[9] = p10;
 		
 		JLabel p11 = new JLabel("");
 		p11.setBounds(1046, 295, 82, 100);
+		p11.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p11);
 		images[10] = p11;
 		
 		JLabel p12 = new JLabel("");
 		p12.setBounds(1018, 407, 82, 100);
+		p12.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p12);
 		images[11] = p12;
 		
 		JLabel p13 = new JLabel("");
 		p13.setBounds(923, 490, 82, 100);
+		p13.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p13);
 		images[12] = p13;
 		
 		JLabel p14 = new JLabel("");
 		p14.setBounds(831, 525, 82, 100);
+		p14.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p14);
 		images[13] = p14;
 		
 		JLabel p15 = new JLabel("");
 		p15.setBounds(738, 545, 82, 100);
+		p15.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p15);
 		images[14] = p15;
 		
 		JLabel p17 = new JLabel("");
 		p17.setBounds(460, 545, 82, 100);
+		p17.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p17);
 		images[16] = p17;
 		
 		JLabel p18 = new JLabel("");
 		p18.setBounds(367, 525, 82, 100);
+		p18.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p18);
 		images[17] = p18;
 		
 		JLabel p19 = new JLabel("");
 		p19.setBounds(275, 490, 82, 100);
+		p19.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p19);
 		images[18] = p19;
 		
 		JLabel p20 = new JLabel("");
 		p20.setBounds(180, 407, 82, 100);
+		p20.setBorder(BorderFactory.createLineBorder(Color.GRAY, border_thickness));
 		frmHarknessDiscussion.getContentPane().add(p20);
 		canvas.setBounds(240, 145, 800, 400);
 		frmHarknessDiscussion.getContentPane().add(canvas);
