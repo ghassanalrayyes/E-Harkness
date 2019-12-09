@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class panel {
 	//lets hope this works
@@ -43,15 +45,6 @@ public class panel {
 	 * Create the application.
 	 */
 	public panel(Member m1) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {					
-					frmStudent.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 		m=m1;
 		initialize();
 	}
@@ -60,11 +53,13 @@ public class panel {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frmStudent = new JFrame();
+		frmStudent.setVisible(true);
 		frmStudent.setResizable(false);
 		frmStudent.setTitle(m.full_name);
 		frmStudent.setBounds(100, 100, 300, 500);
-		frmStudent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmStudent.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmStudent.getContentPane().setLayout(null);
 		ImageIcon testr = new ImageIcon(m.image);
 		Image scaledTest=testr.getImage().getScaledInstance(164, 200, Image.SCALE_SMOOTH);
@@ -86,10 +81,6 @@ public class panel {
 		cite.setBounds(182, 146, 117, 29);
 		frmStudent.getContentPane().add(cite);
 		
-		JButton save = new JButton("Save");
-		save.setBounds(182, 177, 117, 29);
-		frmStudent.getContentPane().add(save);
-		
 		ImageIcon test2 = new ImageIcon("img/logo.png");
 		Image logo = test2.getImage().getScaledInstance(74, 77, Image.SCALE_SMOOTH);
 		JLabel logoIcon = new JLabel("");
@@ -97,11 +88,22 @@ public class panel {
 		logoIcon.setBounds(203, 6, 74, 77);
 		frmStudent.getContentPane().add(logoIcon);
 		
-		JTextArea comments = new JTextArea(m.comments);
+		JTextArea comments = new JTextArea();
 		comments.setWrapStyleWord(true);
 		comments.setLineWrap(true);
-		comments.setText("Type your comments here.");
+		//.equals("") ? "Type your comments here" : m.comments
+		System.out.println(m.comments);
+		comments.setText(m.comments.equals("") ? "Type your comments here" : m.comments);
 		comments.setBounds(6, 213, 288, 259);
 		frmStudent.getContentPane().add(comments);
+		
+		JButton save = new JButton("Save");
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				m.comments=comments.getText();
+			}
+		});
+		save.setBounds(182, 177, 117, 29);
+		frmStudent.getContentPane().add(save);
 	}
 }

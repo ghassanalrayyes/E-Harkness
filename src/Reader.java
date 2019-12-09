@@ -24,7 +24,6 @@ import javax.imageio.ImageIO;
 public class Reader extends PDFStreamEngine {
 	
 	
-	
 	/**
      * Default constructor.
      *
@@ -62,9 +61,6 @@ public class Reader extends PDFStreamEngine {
 				
 			}
 			
-			System.out.println("\n");
-			System.out.println(members);
-			//System.out.println(reader.members.get("DimahAl-Gburi").full_name);
 			
 		}finally
         {
@@ -90,7 +86,7 @@ public class Reader extends PDFStreamEngine {
 		System.out.print("]");
 		 */
 		
-		System.out.println(members);
+		//System.out.println(members);
 	}
 
 	/*public static void main(String[] args) throws IOException {
@@ -141,17 +137,20 @@ public class Reader extends PDFStreamEngine {
 	}
 	private void Setter2() {
 		filtered_student_data = preProcessNamesList();
+		System.out.println("ddddd");
+		System.out.println(filtered_student_data);
 	}
 	
-	boolean upper_school = true;
+	boolean upper_school = false;
 	boolean first = true;
+	
 	private ArrayList<String> preProcessNamesList() {
 		
 		ArrayList<String> names_list = new ArrayList<String>();
 		boolean take_next = false;
 		boolean take_2nd_next = false;
 		for (int i = 0; i < text_arr.length; i++) {
-			//System.out.print(text_arr[i] + " --- " );
+			System.out.print(text_arr[i] + " --- " );
 			if(!upper_school) {
 				if(take_next) {
 					if(text_arr[i].indexOf("Student") > -1) {
@@ -173,7 +172,8 @@ public class Reader extends PDFStreamEngine {
 			}else {
 				if(first) {
 					first = false;
-					take_2nd_next = true;
+					//was take_2nd_next
+					take_next = true;
 				}
 				else if(take_next) {
 					//System.out.print(text_arr[i] + ",");
@@ -202,7 +202,7 @@ public class Reader extends PDFStreamEngine {
 	private void createMember(String name, String grade, BufferedImage img) {
 		
 		String id = name.replaceAll("\\s","");
-		System.out.print(id + " - ");
+		//System.out.print(id + " - ");
 		members.put(id, new Member(name, grade, id, img));
 		
 	}
@@ -237,13 +237,17 @@ public class Reader extends PDFStreamEngine {
  
                 	
                 	BufferedImage bImage = new BufferedImage(imageWidth,imageHeight,BufferedImage.TYPE_INT_ARGB);
-                	bImage = image.getImage();
-                
-                	createMember( filtered_student_data.get(image_number), filtered_student_data.get(image_number+1), bImage);
                 	
-                	image_number++;
+                	
+                	bImage = image.getImage();
+                	System.out.println(filtered_student_data.get(image_number));
+                	//panel p = new panel(new Member(filtered_student_data.get(image_number), filtered_student_data.get(image_number+1), "", bImage));
+                	createMember( filtered_student_data.get(image_number), filtered_student_data.get(image_number+1), bImage);
+                	image_number+=2;
          
             }
+            
+            
             else if(xobject instanceof PDFormXObject)
             {
                 PDFormXObject form = (PDFormXObject)xobject;
