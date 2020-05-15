@@ -28,6 +28,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
 
 public class MainWindow {
 	
@@ -393,6 +398,29 @@ public class MainWindow {
 		btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		btnNewButton.setBounds(6, 123, 126, 51);
 		frmHarknessDiscussion.getContentPane().add(btnNewButton);
+		
+		JButton btnManageClasses = new JButton("Manage Classes >");
+		btnManageClasses.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+		btnManageClasses.setBounds(6, 641, 142, 51);
+		frmHarknessDiscussion.getContentPane().add(btnManageClasses);
+		
+		JList list = new JList();
+		list.setModel(new AbstractListModel() {
+			String[] values = new String[] {"dwad", "awd", "awd"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		list.setSelectedIndex(0);
+		list.setBounds(16, 224, 98, 122);
+		frmHarknessDiscussion.getContentPane().add(list);
+		
+		JLabel lblClass = new JLabel("Class:");
+		lblClass.setBounds(16, 200, 61, 16);
+		frmHarknessDiscussion.getContentPane().add(lblClass);
 		frmHarknessDiscussion.setTitle("Harkness Discussion");
 		frmHarknessDiscussion.setBounds(100, 100, 1280, 720);
 		frmHarknessDiscussion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
