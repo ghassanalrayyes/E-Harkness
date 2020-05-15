@@ -9,5 +9,10 @@
 	<classpathentry kind="lib" path="/Users/noredeenal-zubi/Downloads/jar_files/fontbox-2.0.17.jar"/>
 	<classpathentry kind="lib" path="/Users/noredeenal-zubi/Downloads/jar_files/commons-logging-1.2.jar"/>
 	<classpathentry kind="lib" path="/Users/noredeenal-zubi/Downloads/jar_files/pdfbox-2.0.17.jar"/>
+	<classpathentry kind="lib" path="/Users/noredeenal-zubi/Downloads/commons-io-2.6/commons-io-2.6-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Users/noredeenal-zubi/Downloads/commons-io-2.6/commons-io-2.6-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/noredeenal-zubi/Downloads/commons-io-2.6/commons-io-2.6-test-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/noredeenal-zubi/Downloads/commons-io-2.6/commons-io-2.6-tests.jar"/>
+	<classpathentry kind="lib" path="/Users/noredeenal-zubi/Downloads/commons-io-2.6/commons-io-2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

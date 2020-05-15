@@ -35,10 +35,11 @@ public class Reader extends PDFStreamEngine {
 	ArrayList<String> filtered_student_data;
 	
 	public Reader() throws IOException {
+		
 		members = new HashMap<String, Member>();
 		
 		PDDocument doc = null;
-		String pdf_file = "pdfs/StudentDirectory2019-2020.pdf";
+		String pdf_file = "pdfs/Senior Pics Final.pdf";
 		
 		try {
 			doc = PDDocument.load(new File(pdf_file));
@@ -241,6 +242,12 @@ public class Reader extends PDFStreamEngine {
                 	
                 	bImage = image.getImage();
                 	System.out.println(filtered_student_data.get(image_number));
+                	
+                	
+                	// /Users/noredeenal-zubi/Downloads/AHMAD PICS
+                	File output = new File("storage/AHMAD/" + filtered_student_data.get(image_number) + ".jpg");
+                	System.out.println(output.getPath());
+                	ImageIO.write(bImage, "jpg", output);
                 	//panel p = new panel(new Member(filtered_student_data.get(image_number), filtered_student_data.get(image_number+1), "", bImage));
                 	createMember( filtered_student_data.get(image_number), filtered_student_data.get(image_number+1), bImage);
                 	image_number+=2;
