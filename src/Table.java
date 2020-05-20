@@ -93,12 +93,14 @@ public class Table {
 		return output;
 	}
 	
+	
 	public void transitionTo(String studentID, Point p) {
 		if(isActive)
 			discussion.add(new EntryNode(members.get(studentID), p));
 	}
 	
-	
+	//Automatically and evenly distributes the members of the class on the table
+	//Spaces the students out according to the size of the class and available seats
 	private void distributeMemebrs() {
 		int spaces = 0;
 		if(max_members % num_members == 0) {

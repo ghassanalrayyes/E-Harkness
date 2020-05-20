@@ -53,6 +53,8 @@ public class MainWindow {
 	 * Launch the application.
 	 */
 	
+	
+	//The discussion lines
 	public class Line{
 		int x1,x2,y1,y2,stroke;
 		public Line(int x1, int y1, int x2, int y2) {
@@ -83,10 +85,13 @@ public class MainWindow {
 	 * Create the application.
 	 * @throws IOException 
 	 */
+	
 	public MainWindow() throws IOException {
 	
 		table = new Table(10, false);
 		sChart=table.getSeatingChart();
+		
+		//predefined grid of locations around the table --> bad approach
 		
 		points[0]=new Point(0,200,false);
 		points[1]=new Point(30,125,false);
@@ -109,6 +114,7 @@ public class MainWindow {
 		points[18]=new Point(100,330,false);
 		points[19]=new Point(30,275,false);
 		
+		//
 		for(int i=0;i<points.length;i++) {
 			if(sChart[i]!=null) {
 				points[i].setUse(true);
@@ -123,6 +129,7 @@ public class MainWindow {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frmHarknessDiscussion = new JFrame();
 		frmHarknessDiscussion.setResizable(false);
 		frmHarknessDiscussion.setBackground(Color.LIGHT_GRAY);
@@ -164,28 +171,33 @@ public class MainWindow {
 			public void mousePressed(MouseEvent e) {
 				
 				
-				
+				//check all grid positions for a click
 				for (int i = 0; i < points.length; i++) {
 					if(sChart[i] != null) {
 						
 						
 						if(points[i].intersects((int)canvas.getMousePosition().getX(), (int)canvas.getMousePosition().getY(), 1, 1)){
 							
-							//add line
-							//make addition to linkedlist
+							//only make the connection if this seat is actually occupied as shown by this array
 							if(sChart[i] != null) { 
 								
 								points[i].clicked = true;
+								
+								//only draw a line if this isn't the first clicked point (you need two points to draw a line)
 								if(table.discussion.size() > 0) {
+									
+									//change the active marker to the current position
 									table.discussion.getLast().p.clicked = false;
 									boolean thickened = false;
 									System.out.println("thickened set");
+									
 									for (Line line : lines) {
 										if((line.x1 == table.discussion.getLast().p.x + diam/2 && line.y1 == table.discussion.getLast().p.y + diam/2 && line.x2 == points[i].x + diam/2 && line.y2 == points[i].y + diam/2) || (line.x2 == table.discussion.getLast().p.x + diam/2 && line.y2 == table.discussion.getLast().p.y + diam/2 && line.x1 == points[i].x + diam/2 && line.y1 == points[i].y + diam/2)) {
 											line.stroke++;
 											thickened = true;
 										}
 									}
+									
 									if(!thickened)
 										lines.add(new Line(table.discussion.getLast().p.x + diam/2, table.discussion.getLast().p.y + diam/2, points[i].x + diam/2, points[i].y + diam/2));
 								}
@@ -405,8 +417,9 @@ public class MainWindow {
 		frmHarknessDiscussion.getContentPane().add(btnManageClasses);
 		
 		JList list = new JList();
+		
 		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"dwad", "awd", "awd"};
+			String[] values = new String[] {};
 			public int getSize() {
 				return values.length;
 			}

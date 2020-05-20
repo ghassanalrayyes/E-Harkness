@@ -32,6 +32,8 @@ public class Reader extends PDFStreamEngine {
 	
 	HashMap<String, Member> members;
 	String[] text_arr;
+	
+	//storing the entries from the PDF here to process them later
 	ArrayList<String> filtered_student_data;
 	
 	public Reader() throws IOException {
@@ -51,8 +53,6 @@ public class Reader extends PDFStreamEngine {
 			//because you can't access these vars in the main method -- should be reworked
 			Setter1(parsed_text);
 			Setter2();
-			
-			printArr();
 			
 			PDPageTree pages = doc.getPages();
 			int pageNum = 0;
@@ -77,62 +77,6 @@ public class Reader extends PDFStreamEngine {
 	}
 	
 	
-	
-	//quick helper
-	private void printArr() {
-		/*System.out.print("[");
-		for (String string : text_arr) {
-			System.out.print(string + ", ");
-		}
-		System.out.print("]");
-		 */
-		
-		//System.out.println(members);
-	}
-
-	/*public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		
-		Reader reader = new Reader();
-		PDDocument doc = null;
-		String pdf_file = "pdfs/StudentDirectory2019-2020.pdf";
-		
-		try {
-			doc = PDDocument.load(new File(pdf_file));
-			PDFTextStripper text_stripper = new PDFTextStripper();
-			
-			//to be processed
-			String parsed_text = text_stripper.getText(doc);
-			
-			//because you can't access these vars in the main method -- should be reworked
-			reader.Setter1(parsed_text);
-			reader.Setter2();
-			
-			reader.printArr();
-			
-			PDPageTree pages = doc.getPages();
-			int pageNum = 0;
-			for(PDPage page : pages) {
-				
-				reader.processPage(page);
-				
-			}
-			
-			System.out.println("\n");
-			System.out.println(reader.members);
-			//System.out.println(reader.members.get("DimahAl-Gburi").full_name);
-			
-		}finally
-        {
-            if( doc != null )
-            {
-                doc.close();
-            }
-            
-            //return sth??
-        }
-	}*/
-	
 	private void Setter1(String input) {
 		text_arr = input.split("\n");
 	}
@@ -144,6 +88,15 @@ public class Reader extends PDFStreamEngine {
 	
 	boolean upper_school = false;
 	boolean first = true;
+	
+	
+	/*
+	 * There is no point in trying to understand this.
+	 * This is all the logic behind unpacking the format of the PDF to extract the JPEG images
+	 * The PDF is formatted inconsistently and required a decision tree to be made from scratch
+	 * i.e not all pages are encoded the same
+	 * In short, I use the headings at the top of every page to tell me how to handle it
+	 * */
 	
 	private ArrayList<String> preProcessNamesList() {
 		
@@ -202,8 +155,8 @@ public class Reader extends PDFStreamEngine {
 	
 	private void createMember(String name, String grade, BufferedImage img) {
 		
+		//clean up the data from the PDF (eliminate spaces, etc)
 		String id = name.replaceAll("\\s","");
-		//System.out.print(id + " - ");
 		members.put(id, new Member(name, grade, id, img));
 		
 	}
@@ -215,6 +168,9 @@ public class Reader extends PDFStreamEngine {
 	 /**
      * @param operator The operation to perform.
      * @param operands The list of arguments.
+     * 
+     * 
+     * This function is called for every page and provides a stream of images (inside the "operator")
      *
      * @throws IOException If there is an error processing the operation.
      */
@@ -244,11 +200,13 @@ public class Reader extends PDFStreamEngine {
                 	System.out.println(filtered_student_data.get(image_number));
                 	
                 	
-                	// /Users/noredeenal-zubi/Downloads/AHMAD PICS
                 	File output = new File("storage/AHMAD/" + filtered_student_data.get(image_number) + ".jpg");
                 	System.out.println(output.getPath());
+                	
+                	//store image
                 	ImageIO.write(bImage, "jpg", output);
-                	//panel p = new panel(new Member(filtered_student_data.get(image_number), filtered_student_data.get(image_number+1), "", bImage));
+                	
+                	//instantiate a member from the data pulled from the PDF
                 	createMember( filtered_student_data.get(image_number), filtered_student_data.get(image_number+1), bImage);
                 	image_number+=2;
          
