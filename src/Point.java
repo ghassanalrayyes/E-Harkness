@@ -2,7 +2,7 @@ import java.awt.Rectangle;
 
 public class Point extends Rectangle{
 
-	//private int x,y;
+
 	boolean draw;
 	boolean clicked;
 	
