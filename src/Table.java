@@ -135,13 +135,6 @@ public class Table {
 	}
 	
 	
-	/*public static void main(String[] args) {
-		Table t = new Table(10, true);
-		System.out.println(t.getElapsedTime());
-	}*/
-	
-	
-	
 	
 	
 	

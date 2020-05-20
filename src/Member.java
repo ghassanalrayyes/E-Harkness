@@ -26,6 +26,13 @@ public class Member {
 		questions = new ArrayList<Question>();
 	}
 	
+	
+	/*
+	 * 
+	 * New features: mapping discussion events over time
+	 * 
+	 * */
+	
 	public void addInterrption(long time) {
 		interruptions.add(new Interruption(time));
 	}

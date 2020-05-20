@@ -14,31 +14,24 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
+/*
+ * 
+ * This is the panel that allows the user to annotate the discussion
+ * 
+ * 
+ * */
+
+
 public class panel {
-	//lets hope this works
+	
+	
 	private JFrame frmStudent;
 
-	Member m;
+	private Member m;
 	/**
 	 * Launch the application.
 	 */
-	
-	
-	
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Member dum=new Member("David Friedman","12","DavidFriedman",ImageIO.read(new File("img/test.jpg")));
-					panel window = new panel(dum);
-					window.frmStudent.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	*/
 	
 
 	/**
@@ -61,6 +54,8 @@ public class panel {
 		frmStudent.setBounds(100, 100, 300, 500);
 		frmStudent.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmStudent.getContentPane().setLayout(null);
+		
+		
 		ImageIcon testr = new ImageIcon(m.image);
 		Image scaledTest=testr.getImage().getScaledInstance(164, 200, Image.SCALE_SMOOTH);
 		testr=new ImageIcon(scaledTest);
@@ -91,9 +86,14 @@ public class panel {
 		JTextArea comments = new JTextArea();
 		comments.setWrapStyleWord(true);
 		comments.setLineWrap(true);
-		//.equals("") ? "Type your comments here" : m.comments
-		System.out.println(m.comments);
+		
+		
+		
+		//Saving comments written earlier: populate the field with whatever comments are already stored
 		comments.setText(m.comments.equals("") ? "Type your comments here" : m.comments);
+		
+		
+		
 		comments.setBounds(6, 213, 288, 259);
 		frmStudent.getContentPane().add(comments);
 		
@@ -103,6 +103,7 @@ public class panel {
 				m.comments=comments.getText();
 			}
 		});
+		
 		save.setBounds(182, 177, 117, 29);
 		frmStudent.getContentPane().add(save);
 	}
