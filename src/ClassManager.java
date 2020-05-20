@@ -68,7 +68,7 @@ public class ClassManager {
 	 * @throws IOException 
 	 */
 	
-	
+	//helper function
 	public boolean contains_str(ArrayList<String> list, String str) {
 		for (String title : list) {
 			if(title.equals(str))
@@ -78,17 +78,20 @@ public class ClassManager {
 	}
 	
 	
-	//remove this param
+
 	ArrayList<String> file_names_list = new ArrayList<>();
 	ArrayList<JPanel> tabbed_panels = new ArrayList<>();
 	
 	public void load(JTabbedPane tabbedPane) throws IOException {
 		
+		
+		//get the files in the Classes folder --> each txt file represents a class with student data inside
 		FilenameFilter filter = new FilenameFilter() {
 		    public boolean accept(File dir, String name) {
 		        return name.endsWith(".txt");
 		    }
 		};
+		
 
 		File folder = new File("storage/Classes");
 		File[] listOfFiles = folder.listFiles(filter);
@@ -96,12 +99,9 @@ public class ClassManager {
 		
 		for (int i = 0; i < listOfFiles.length; i++) {
 			
-			
 			File file = listOfFiles[i];
 			
-			
-			
-			
+			//to avoid re-adding an already-existing file to the tabbed pane
 			if (!contains_str(file_names_list, file.getName())) {
 				@SuppressWarnings("deprecation")
 			    JPanel panel = new JPanel();
@@ -115,6 +115,7 @@ public class ClassManager {
 			    
 			    JList<String> list = new JList<>(lst.toArray(str));
 			    
+			    //add the names of students to the panel view
 			    panel.add(list, BorderLayout.CENTER);
 			    tabbed_panels.add(panel);
 			    
@@ -140,8 +141,12 @@ public class ClassManager {
 	 * Initialize the contents of the frame.
 	 * @throws IOException 
 	 */
+	
+	
 	JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 	private void initialize() throws IOException {
+		
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 700, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -195,10 +200,9 @@ public class ClassManager {
 			    try {
 					if (myObj.createNewFile()) {
 						//load
-						
 						System.out.println("kkkj");
+						//reload the pane after adding a new file --> this approach instead of adding straight to the interface here
 						load(tabbedPane);
-						
 					}else {
 						 String class_name_trial2 = JOptionPane.showInputDialog(null, "A class with that name already exists. Pick a unique name:", "name", JOptionPane.WARNING_MESSAGE);
 					}
