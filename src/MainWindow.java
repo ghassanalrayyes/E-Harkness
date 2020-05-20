@@ -388,6 +388,7 @@ public class MainWindow {
 				public void mouseClicked(MouseEvent e) {
 					if(sChart[j] == null) {
 						//show addition tools
+						
 					}
 					panel p = new panel(sChart[j]);
 					

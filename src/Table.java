@@ -87,9 +87,12 @@ public class Table {
 	//to get the current state of the table -- for painting the layout and getting student information
 	public Member[] getSeatingChart(){
 		Member[] output = new Member[max_members];
+		
 		for (int i = 0; i < output.length; i++) {
+			
 			output[i] = members.get(seat_chart[i]);
 		}
+		
 		return output;
 	}
 	

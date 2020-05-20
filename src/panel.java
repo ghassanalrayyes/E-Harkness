@@ -28,7 +28,7 @@ public class panel {
 	
 	private JFrame frmStudent;
 
-	private Member m;
+	Member m;
 	/**
 	 * Launch the application.
 	 */
@@ -38,6 +38,7 @@ public class panel {
 	 * Create the application.
 	 */
 	public panel(Member m1) {
+		System.out.println();
 		m=m1;
 		initialize();
 	}

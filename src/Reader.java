@@ -41,7 +41,7 @@ public class Reader extends PDFStreamEngine {
 		members = new HashMap<String, Member>();
 		
 		PDDocument doc = null;
-		String pdf_file = "pdfs/Senior Pics Final.pdf";
+		String pdf_file = "pdfs/StudentDirectory2019-2020.pdf";
 		
 		try {
 			doc = PDDocument.load(new File(pdf_file));
@@ -197,14 +197,6 @@ public class Reader extends PDFStreamEngine {
                 	
                 	
                 	bImage = image.getImage();
-                	System.out.println(filtered_student_data.get(image_number));
-                	
-                	
-                	File output = new File("storage/AHMAD/" + filtered_student_data.get(image_number) + ".jpg");
-                	System.out.println(output.getPath());
-                	
-                	//store image
-                	ImageIO.write(bImage, "jpg", output);
                 	
                 	//instantiate a member from the data pulled from the PDF
                 	createMember( filtered_student_data.get(image_number), filtered_student_data.get(image_number+1), bImage);
