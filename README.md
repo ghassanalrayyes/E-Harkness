@@ -37,7 +37,7 @@ Check it out in action:
 Some features and functionality:
 ===============================
 * Automatic even distribution of students on the table. The algorithm uses the most effecient and space-maximizing layout.
-* The student data is pulled from a universal student directory PDF which has very inconsistent formatting. Unpacking this PDF was generally a nightmare, and required a convoluted decision tree (inside the Reader class)
+* The student data is pulled from a universal student directory PDF which has very inconsistent formatting. Unpacking this PDF was generally a nightmare, and required a convoluted decision tree (inside the Reader class).
 
 Concepts/Technbologies (practiced):
 ========================
