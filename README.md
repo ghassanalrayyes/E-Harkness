@@ -5,10 +5,13 @@ I attended high school at King's Academy, where the Harkness Method is most ofte
 All teachers nowadays still use a **sheet of paper** to map out and annotate the discussion as shown here:
 <br>
 <p align="center">
-  <img src="https://i.pinimg.com/originals/29/66/07/2966078c75249aa22b77f77c25bbb73b.png" alt="Harkness" width="50%"  height="50%">
+  <img src="https://i.pinimg.com/originals/29/66/07/2966078c75249aa22b77f77c25bbb73b.png" alt="Harkness" width="20%"  height="20%">
   <br>
- 
+ <img src="https://www.mmiprep.org/images/news/2018/MMI-Harkness-Table-Photo-2.jpg" alt="Harkness" width="50%"  height="50%">
+  <br>
 </p>
+
+
 
 <br>
 
