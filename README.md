@@ -28,9 +28,24 @@ All teachers nowadays still use a sheet of paper to map out and annotate the dis
 Check it out in action:
 ========================
 
-
+<p align="center">
+<img alt="GIF" src="https://user-images.githubusercontent.com/30037359/82523419-db6a4180-9b34-11ea-9e5c-59fb3d3a5c56.gif">
+</p>
 
 <br>
+
+Some features and functionality:
+===============================
+* Automatic even distribution of students on the table. The algorithm uses the most effecient and space-maximizing layout.
+* The student data is pulled from a universal student directory PDF which has very inconsistent formatting. Unpacking this PDF was generally a nightmare, and required a convoluted decision tree (inside the Reader class)
+
+Concepts/Technbologies (practiced):
+========================
+
+1. Java Swing for the graphics and UI.
+2. PDF file parsing with PDFBox.
+3. Linked lists to map out the discussion, Hashmaps to store all tbe student data for quick access.
+4. OOP--inheritance with graphics; Member, Class, Table, Point data models.
 
 
 
